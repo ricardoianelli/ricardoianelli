@@ -1,4 +1,4 @@
-### Hi there <img alt="Waving hand emoji" src="https://github.com/OfficialMarinho/OfficialMarinho/blob/master/waving-hand-emoji-animated.gif?raw=true" width="25px">, I'm Ricardo Ianelli! 
+### Hey there <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px">, I'm Ricardo Ianelli! 
 ![](https://visitor-badge.glitch.me/badge?page_id=ricardoianelli.ricardoianelli)
 
 ## :triangular_flag_on_post: Technical skills
@@ -25,7 +25,14 @@
 
 ## 💬 For know more about me:
 
-[![LinkedIn Badge](https://img.shields.io/badge/-ricardoianelli-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/ricardoianelli//)](https://www.linkedin.com/in/ricardoianelli/)
+<a href="https://www.linkedin.com/in/ricardoianelli/">
+  <img align="left" alt="Ricardo's Linkedin" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />
+</a>
+<a href="https://www.instagram.com/ricardoianelli/">
+  <img align="left" alt="Ricardo's Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />
+</a>
+
+<br />
 
 ![Ricardo's github stats](https://github-readme-stats.vercel.app/api?username=ricardoianelli&count_private=true&show_icons=true&theme=algolia) [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ricardoianelli&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
 
