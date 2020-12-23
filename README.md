@@ -5,7 +5,7 @@
 ## :triangular_flag_on_post: Technical skills
 - Programming languages: C# and Python
 - Cloud Computing: Docker and Azure
-- Database / Data structure store: PostgreSQL
+- Database / Data structure store: PostgreSql and SqlServer
 - Misc: Clean Code | .Net Core | Data Science | SOLID | REST | Git | TDD | Business Intelligence | PowerBI | SQL | Pandas | Numpy | MatplotLib | Seaborn | Geopandas | Scrum | API | Digital Games
 
  <img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="500" height="320" />
