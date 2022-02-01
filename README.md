@@ -3,17 +3,17 @@
 ![](https://visitor-badge.glitch.me/badge?page_id=ricardoianelli.ricardoianelli)
 
 ## :triangular_flag_on_post: Technical skills
-- Programming languages: C# and Python
+- Programming languages: Java, C# and Python
 - Cloud Computing: Docker and Azure
 - Database / Data structure store: PostgreSql and SqlServer
-- Misc: Clean Code | .Net Core | Data Science | SOLID | REST | Git | TDD | Business Intelligence | PowerBI | SQL | Pandas | Numpy | MatplotLib | Seaborn | Geopandas | Scrum | API | Digital Games
+- Misc: Clean Code | JVM | .Net Core | Data Science | SOLID | REST | Git | TDD | Swing | Business Intelligence | PowerBI | SQL | Pandas | Numpy | MatplotLib | Seaborn | Geopandas | Scrum | API | Digital Games
 
  <img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="500" height="320" />
 
 ## :runner: About me
 
-- 👨🏽‍💻 Mainly a .Net developer, but also someone who loves digital games;
-- 🌱 I’m currently learning more about Kubernetes, DDD and architecture-related stuff; 
+- 👨🏽‍💻 Someone who love coding and digital games;
+- 🌱 Currently pursuing my Masters degree in Computer Science at Maharishi International University; 
 - 💬 Ask me about anything, I am happy to help;
 - 📫 How to reach me: [@ricardoianelli](https://www.linkedin.com/in/ricardoianelli/);
 
