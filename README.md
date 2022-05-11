@@ -4,7 +4,7 @@
 
 ## :triangular_flag_on_post: Technical skills
 - Programming languages: Java, C#, Python, Lua
-- Cloud Computing: Docker and Azure (Taking a course in May, full month learning about Cloud Computing, new things coming here!)
+- Cloud Computing: AWS, Docker, Azure
 - Database / Data structure store: PostgreSql, SqlServer, MySql
 - Misc: Java | Python | C# | Lua | Development | Agile | Algorithms | .Net Core | Spring Boot | Hibernate | JPA | SOLID | REST | Git | Docker | Algorithms | TDD | Unit Tests | SQL | Pandas | Numpy | MatplotLib | Seaborn | Geopandas | Swing | Scrum | API | CQRS | Event Sourcing | Entity | Digital Games | Game Design | Scientific Divulgation | Teaching | Volunteer
 
