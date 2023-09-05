@@ -8,6 +8,16 @@ ul#summary {
     padding: 0;
 }
 
+h3 {
+    color: blueviolet;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h2 {
+    color: rgb(94, 18, 94);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .footer {
     bottom:0; 
     width: 100%;
