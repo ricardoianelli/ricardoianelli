@@ -12,3 +12,8 @@ ul#summary {
     bottom:0; 
     width: 100%;
 }
+
+.important-word {
+    font-weight: bold;
+    color: blueviolet;
+}
