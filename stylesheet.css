@@ -31,3 +31,18 @@ hr {
     list-style-position: inside;
     padding-left: 0;
 }
+
+.author-name-row {
+    font-size: small;
+    font-style: italic;
+}
+
+.book-img-container {
+    width: 15vw;
+    height: 20vw;
+}
+
+.book-images-row img {
+    width: 100%;
+    height: 100%;
+}
