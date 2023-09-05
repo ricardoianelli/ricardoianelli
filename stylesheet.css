@@ -17,3 +17,17 @@ ul#summary {
     font-weight: bold;
     color: blueviolet;
 }
+
+hr {
+    width: 50%;
+}
+
+.centralized-list-div {
+    width: 50%;
+    margin: auto;
+}
+
+.centralized-list {
+    list-style-position: inside;
+    padding-left: 0;
+}
