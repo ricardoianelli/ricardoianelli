@@ -66,3 +66,8 @@ hr {
     width: 15vw;
     height: 15vw;
 }
+
+.italic-text {
+    font-style: italic;
+    color: brown;
+}
