@@ -1,0 +1,13 @@
+#top-panel {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#topmenu-item {
+    margin: 10px;
+}
