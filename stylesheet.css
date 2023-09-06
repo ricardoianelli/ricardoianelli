@@ -42,9 +42,13 @@ hr {
     padding-left: 0;
 }
 
-.author-name-row {
+.italic-text {
     font-size: small;
     font-style: italic;
+}
+
+.bold-text {
+    font-weight: bold;
 }
 
 .book-img-container {
@@ -83,4 +87,21 @@ a:hover {
 p::first-letter {
     color: blueviolet;
     font-size: xx-large;
-  }
+}
+
+.unmarked-list-item {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.movie-img-container {
+    width: 15vw;
+    height: 20vw;
+    margin: auto;
+}
+
+.movie-img-container img {
+    width: 100%;
+    height: 100%;
+}
