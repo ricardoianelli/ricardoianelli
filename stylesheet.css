@@ -71,3 +71,16 @@ hr {
     font-style: italic;
     color: brown;
 }
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p::first-letter {
+    color: blueviolet;
+    font-size: xx-large;
+  }
