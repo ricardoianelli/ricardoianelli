@@ -6,15 +6,125 @@
         <meta name="keywords" content="WAP, MIU, CS472,HTML,CSS">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
     
-        <title>WAP - Lab 3 - Ricardo M. Ianelli</title>
+        <title>WAP - Lab 4 - Ricardo M. Ianelli</title>
 
         <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
-        <div id="top-panel">
-            <div id="topmenu-item">Logo</div>
-            <div id="topmenu-item">Welcome, Ricardo!</div>
-            <div id="topmenu-item"><Button>Logout</Button></div>
+        <div id="top-bar">
+            <label class="important-text-1">Workshop Registration</label>
+            <div>
+                <label class="important-text-3">More Actions</label>
+                <select class="noborder-select"><!--Empty, just need to reproduce the looks--></select>
+            </div>  
+        </div>
+
+        <div id="main-content">
+            <div id="main-content-column-1">
+                <a href="">Register now while seats are available!</a>
+                <form action="" method ="">
+                    <label class="bold-label">First Name</label><label class="red-text">*</label>
+                    <input type="text" name="firstname" size="16" />
+                    
+                    <div class="break"></div> 
+                    
+                    <label class="bold-label">Last Name</label><label class="red-text">*</label>
+                    <input type="text" name="lastname" size="16" />
+
+                    <div class="break"></div> 
+                    
+                    <label class="bold-label">Company/Institution</label><label class="red-text">*</label>
+                    <input type="text" name="company-institution" size="16" />
+
+                    <div class="break"></div> 
+                    
+                    <label class="bold-label">Address</label><label class="red-text">*</label>
+                    <textarea id="address" name="address" rows="4" cols="30"></textarea>
+
+                    <div class="break"></div> 
+                    
+                    <label class="bold-label">City</label>
+                    <input type="text" name="city" size="16" />
+
+                    <div class="break"></div> 
+                    
+                    <label class="bold-label">State/Province/Region</label>
+                    <select name="state" id="state-province-region">
+                        <option value="default">- Select -</option>
+                    </select>
+
+                    <div class="break"></div> 
+                    
+                    <label class="bold-label">Country</label>
+                    <select name="country" id="country">
+                        <option value="default">- Select -</option>
+                    </select>
+
+                    <div class="break"></div> 
+                    
+                    <label class="bold-label">E-Mail</label>
+                    <input type="text" name="email" size="16" />
+
+                    <div class="break"></div> 
+                    
+                    <label class="bold-label">Phone Number</label>
+                    <input type="text" name="phone" size="16" />
+                </form>
+            </div>
+
+            <div id="main-content-column-2">
+                <label class="underlined-text">Lunch</label>
+
+                <div class="break"></div> 
+
+                <label class="bold-label">Meal Preference</label>
+                <select name="mealpref" id="mealpref">
+                    <option value="default">Vegetarian</option>
+                </select>
+
+                <div class="break"></div> 
+
+                <label class="underlined-text">Payment Details</label>
+
+                <div class="break"></div> 
+
+                <label class="bold-label">Payment Mode</label>
+                                
+                <div id="payment-div">
+                    <input type="checkbox" id="cash" name="cash" value="Cash">
+                    <label for="cash">Cash</label><br>
+
+                    <input type="checkbox" id="cheque" name="cheque" value="Cheque">
+                    <label for="cheque">Cheque</label><br>
+
+                    <input type="checkbox" id="demanddraft" name="demanddraft" value="DemandDraft">
+                    <label for="demanddraft">Demand Draft</label><br>
+                </div>
+
+                <div class="break"></div> 
+
+                <label class="bold-label">DD/Cheque No.</label>
+                <input type="text" name="dd-cheque" size="16" />
+
+                <div class="break"></div> 
+
+                <label class="bold-label">Drawn On (Bank Name)</label>
+                <input type="text" name="bankname" size="16" />
+
+                <div class="break"></div> 
+
+                <label class="bold-label">Payable At</label>
+                <input type="text" name="payableat" size="16" />
+
+                <div class="break"></div> 
+
+            </div>
+    
+        </div>
+
+        <div id="bottom-bar">
+            <button>Submit</button>
+            <button>Reset</button>
         </div>
     </body>
 </html>
