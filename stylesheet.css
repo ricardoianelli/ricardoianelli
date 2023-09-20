@@ -1,13 +1,7 @@
-#top-panel {
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-    min-height: 10vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+#userName {
+    background-color: rgb(200, 183, 216);
 }
 
-#topmenu-item {
-    margin: 10px;
+#productName {
+    background-color: rgb(186, 228, 185);
 }
