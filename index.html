@@ -2,19 +2,80 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="WAP - Ricardo Ianelli - Assignments">
-        <meta name="keywords" content="WAP, MIU, CS472,HTML,CSS">
+        <meta name="description" content="WAP - Ricardo Ianelli - Project">
+        <meta name="keywords" content="WAP, MIU, CS472, HTML, CSS, JavaScript, Node, Node.js, Express">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
     
-        <title>WAP - Lab 3 - Ricardo M. Ianelli</title>
+        <title>WAP - Project - Ricardo M. Ianelli</title>
 
         <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
-        <div id="top-panel">
+        <div id="top-panel-logged-in" style="display: none;">
             <div id="topmenu-item">Logo</div>
             <div id="topmenu-item">Welcome, Ricardo!</div>
             <div id="topmenu-item"><Button>Logout</Button></div>
+        </div>
+        <div id="top-panel-logged-out">
+            <div id="topmenu-item">Logo</div>
+            <div id="topmenu-item">
+                login and pass
+            </div>
+            <div id="topmenu-item"><Button>Login</Button></div>
+        </div>
+
+        <div id="main-content">
+            <div id="logged-out-main-content">
+                <label class="main-content-item, highlighted-text">Welcome to my store!</label>
+            </div>
+
+            <div id="logged-in-main-content">
+                <div id="shopping-available-items">
+                    <label class="main-content-item, highlighted-text">Product List</label>
+                    <table class="main-content-item">
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="main-content-item">
+                    <label class="highlighted-text">Your shopping cart</label>
+                </div>
+
+                <div id="empty-cart-div" class="main-content-item">
+                    <label>There is no item in your shopping cart!</label>
+                </div>
+
+                <div id="shopping-cart-items" class="main-content-item">
+                    <table class="main-content-item">
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Quantity</th>
+                        </tr>
+                        <tr>
+                            <td>Node.Js</td>
+                            <td>999</td>
+                            <td>9.99</td>
+                            <td>
+                                <div class="quantity-div">
+                                    <button>-</button>
+                                    <input type="number" min="0" value="0"/>
+                                    <button>+</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
         </div>
     </body>
 </html>
