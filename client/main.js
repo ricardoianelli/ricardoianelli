@@ -80,11 +80,37 @@ async function Login(username, password) {
         document.getElementById('errorLabel').innerHTML = data.error;
     } 
     else { // Login succeeded
+        document.getElementById('errorLabel').innerHTML = "";
         console.log("Trying to log in with user " + username + " and password " + password);
         SaveUser(data.username);
         SaveToken(data.username);
         LoadLoggedInPage();
     };
+};
+
+async function LoadProducts() {
+    const response = await fetch('http://localhost:3000/products', {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json'
+        }
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    if(data.error) {
+        console.log("error: " + data.error);
+        document.getElementById('product-list-error').innerHTML = data.error;
+    } 
+    else {
+        let productsTable = document.getElementById('product-list-table');
+        PopulateProducts(data);
+    };
+};
+
+function PopulateProducts(data) {
+    
 };
 
 

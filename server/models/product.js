@@ -6,10 +6,6 @@ module.exports = class Product {
         this.price = price;
         this.image = image;
         this.stock = stock;
-
-        if (!FindByName(name)) {
-            products.push()
-        }
     };
 
     ChangeQuantity(quantity) {
@@ -29,8 +25,40 @@ module.exports = class Product {
         this.ChangeQuantity(-quantity);
     };
 
-    FindByName(name) {
-        return products.find(p => p.name == this.name);
+    save() {
+        products.push(this);
+        return this;
     }
 
+    update() {
+        const index = products.findIndex(p => p.name === this.name);
+        if (index > -1) {
+            products.splice(index, 1, this);
+            return this;
+        } else {
+            throw new Error('NOT Found');
+        }
+    }
+
+    static fetchAll() {
+        return products;
+    };
+
+    static findByName(name) {
+        const index = products.findIndex(p => p.name === name);
+        if (index > -1) {
+            return products[index];
+        } else {
+            return null;
+        }
+    };
+
+    static deleteByName(name) {
+        const index = products.findIndex(p => p.name === name);
+        if (index > -1) {
+            products = products.filter(p => p.name !== name);
+        } else {
+            throw new Error('NOT Found');
+        }
+    };
 };
