@@ -25,13 +25,13 @@
         </div>
 
         <div id="main-content">
-            <div id="logged-out-main-content">
-                <label class="main-content-item, highlighted-text">Welcome to my store!</label>
+            <div id="logged-out-main-content" style="display: none;">
+                <label class="main-content-item highlighted-text">Welcome to my store!</label>
             </div>
 
-            <div id="logged-in-main-content">
+            <div id="logged-in-main-content" >
                 <div id="shopping-available-items">
-                    <label class="main-content-item, highlighted-text">Product List</label>
+                    <label class="main-content-item highlighted-text">Product List</label>
                     <table class="main-content-item">
                         <tr>
                             <th>Name</th>
@@ -43,37 +43,47 @@
                     </table>
                 </div>
 
-                <div class="main-content-item">
-                    <label class="highlighted-text">Your shopping cart</label>
+                <div id="shopping-cart-items">
+                    <div class="main-content-item">
+                        <label class="highlighted-text">Your shopping cart</label>
+                    </div>
+    
+                    <div id="shopping-cart-items-empty" class="main-content-item" style="display: none;">
+                        <label>There is no item in your shopping cart!</label>
+                    </div>
+    
+                    <div id="shopping-cart-items-not-empty" class="main-content-item">
+                        <table class="main-content-item">
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th>Quantity</th>
+                            </tr>
+                            <tr>
+                                <td>Node.Js</td>
+                                <td>999</td>
+                                <td>9.99</td>
+                                <td>
+                                    <div class="quantity-div">
+                                        <button>-</button>
+                                        <input type="number" min="0" value="0"/>
+                                        <button>+</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="shopping-cart-total-row" colspan="4">
+                                    Total: 0 
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+    
+                    <div id="place-order-div" class="main-content-item">
+                        <button id="place-order-button">Place Order</button>
+                    </div>
                 </div>
-
-                <div id="empty-cart-div" class="main-content-item">
-                    <label>There is no item in your shopping cart!</label>
-                </div>
-
-                <div id="shopping-cart-items" class="main-content-item">
-                    <table class="main-content-item">
-                        <tr>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Total</th>
-                            <th>Quantity</th>
-                        </tr>
-                        <tr>
-                            <td>Node.Js</td>
-                            <td>999</td>
-                            <td>9.99</td>
-                            <td>
-                                <div class="quantity-div">
-                                    <button>-</button>
-                                    <input type="number" min="0" value="0"/>
-                                    <button>+</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
             </div>
 
         </div>
