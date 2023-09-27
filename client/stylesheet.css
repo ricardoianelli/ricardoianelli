@@ -127,3 +127,7 @@ table, th, td {
 table#login-table, table#login-table tr td {
     border-style: none;
 }
+
+#errorLabel {
+    color: red;
+}

@@ -3,15 +3,6 @@ window.onload = function() {
     console.log("token: " + token);
 
     LoadLoggedOutPage();
-
-    // if (token != null) {
-    //     console.log("token != null");
-    //     LoadLoggedInPage();
-    // }
-    // else {
-    //     console.log("token == null");
-    //     LoadLoggedOutPage();
-    // }
 };
 
 function LoadLoggedOutPage() {
@@ -26,10 +17,7 @@ function LoadLoggedOutPage() {
 
     document.getElementById('login-button').onclick = function() {
         let user = usernameField.value;
-        console.log("Trying to log in with user " + user + " and password " + passwordField.value);
-        SaveUser(user);
-        SaveToken(user + "_token");
-        LoadLoggedInPage();
+        Login(user, passwordField.value);
     };
 };
 
@@ -71,6 +59,32 @@ function SaveToken(token) {
 
 function UpdateUserWelcomeText(user) {
     document.getElementById("login-welcome-text").innerHTML = "Welcome, " + user;
+}
+
+async function Login(username, password) {
+    const response = await fetch('http://localhost:3000/users', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if(data.error) { // Login failed
+            console.log("error: " + data.error);
+            document.getElementById('errorLabel').innerHTML = data.error;
+        } 
+        else { // Login succeeded
+            console.log("Trying to log in with user " + username + " and password " + password);
+            SaveUser(data.username);
+            SaveToken(data.username);
+            LoadLoggedInPage();
+        }
 }
 
 
