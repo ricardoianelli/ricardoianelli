@@ -26,4 +26,10 @@ exports.remove = (req, res, next) => {
     res.status(200).json(cart);
 };
 
+exports.placeOrder = (req, res, next) => {
+    let cart = ShoppingCart.findByUser(req.params.user);
+    let orderPlacement = cart.placeOrder();
+    res.status(200).json(orderPlacement);
+};
+
 

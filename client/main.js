@@ -41,12 +41,18 @@ function LoadLoggedInPage() {
     ShowElement("top-panel-logged-in");
     ShowElement("logged-in-main-content");
 
+    document.getElementById('place-order-button').onclick = function() {
+        PlaceOrder();
+    };
+
     document.getElementById('logout-button').onclick = function() {
         console.log("Logging out user " + loggedInUser);
         SaveUser(null);
         SaveToken(null);
         LoadLoggedOutPage();
     };
+
+
 
     LoadProducts();
     RefreshShoppingCart();
@@ -71,6 +77,28 @@ function SaveToken(token) {
 function UpdateUserWelcomeText(user) {
     document.getElementById("login-welcome-text").innerHTML = user;
 };
+
+async function PlaceOrder() {
+    let currentUser = sessionStorage.getItem('user');
+    console.log("Placing order for user " + currentUser);
+
+    const response = await fetch('http://localhost:3000/cart/place/' + currentUser, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        }
+    });
+
+    const data = await response.json();
+
+    if(data.error) {
+        console.log("error: " + data.error);
+    } 
+    else {
+        LoadProducts();
+        RefreshShoppingCart();
+    };
+}
 
 async function Login(username, password) {
     const response = await fetch('http://localhost:3000/users', {
@@ -100,6 +128,7 @@ async function Login(username, password) {
 };
 
 async function LoadProducts() {
+    console.log("Requesting product list...");
     const response = await fetch('http://localhost:3000/products', {
         method: 'GET',
         headers: {
@@ -111,7 +140,6 @@ async function LoadProducts() {
 
     if(data.error) {
         console.log("error: " + data.error);
-        document.getElementById('product-list-error').innerHTML = data.error;
     } 
     else {
         let productsTable = document.getElementById('product-list-table');
@@ -183,7 +211,6 @@ async function addToCart(product) {
 
     if(data.error) {
         console.log("error: " + data.error);
-        document.getElementById('errorLabel').innerHTML = data.error;
     } 
     else {
         console.log("Added to cart");
@@ -207,7 +234,6 @@ async function removeFromCart(product) {
 
     if(data.error) {
         console.log("error: " + data.error);
-        document.getElementById('errorLabel').innerHTML = data.error;
     } 
     else {
         console.log("Removed from cart");
@@ -223,7 +249,6 @@ async function RefreshShoppingCart() {
 
     if(data.error) {
         console.log("error: " + data.error);
-        document.getElementById('errorLabel').innerHTML = data.error;
     } 
     else {
         console.log("shopping cart backend data: " + JSON.stringify(data));

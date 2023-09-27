@@ -1,5 +1,5 @@
 module.exports = class Product {
-    
+
     static products = [
         new Product("Node.JS", 9.99, "https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png", 7),
         new Product("React", 19.99, "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png", 5),
@@ -14,7 +14,7 @@ module.exports = class Product {
     };
 
     changeQuantity(quantity) {
-    prod = Product.products.find(p => p.name == this.name);
+        let prod = Product.products.find(p => p.name == this.name);
         if (prod.stock + quantity < 0) {
             throw new Error("Cannot decrease stock bellow zero.");
         };

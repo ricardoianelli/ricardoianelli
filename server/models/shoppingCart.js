@@ -1,6 +1,7 @@
 let shoppingCarts = [];
 
 const ShoppingCartLine = require("./shoppingCartLine");
+const Products = require("./product");
 
 module.exports = class ShoppingCart {
 
@@ -42,12 +43,22 @@ module.exports = class ShoppingCart {
     };
 
     addProduct(productName, productPrice) {
+
+        let stockProduct = Products.findByName(productName);
+        if (stockProduct == null || stockProduct.stock <= 0) {
+            throw new Error("Product not available on stock!");
+        }
+
         let product = this.getProduct(productName);
         if (product == null) {
             let newProduct = new ShoppingCartLine(productName, productPrice, 1);
             this.cartLines.push(newProduct);
             this.calculateTotal();
             return;
+        }
+
+        if (stockProduct.stock < product.quantity+1) {
+            throw new Error("Not enough product on stock to add more to the cart.");
         }
 
         product.add(1);
@@ -65,6 +76,35 @@ module.exports = class ShoppingCart {
             this.cartLines = this.cartLines.filter(p => p.productName != productName);
         };
         this.calculateTotal();
+    };
+
+    //Testing a different way, change to the pattern I used in the others later
+    placeOrder = function() {
+        let orderDesc = this.generateOrderDesc();
+        console.log(orderDesc);
+        this.cartLines.forEach(line => {
+            let prod = Products.findByName(line.productName);
+            
+            if (prod == null) {
+                throw new Error("Could not find product named " + line.productName);
+            }
+
+            //TODO: Improve this decision making
+            if (prod.stock < line.quantity) {
+                throw new Error("Not enough of the product.");
+            }
+
+            prod.remove(line.quantity);
+        });
+
+        this.cartLines = [];
+        this.total = 0;
+        
+        return orderDesc;
+    };
+
+    generateOrderDesc() {
+        return "Order placed for user " + this.user + ": " + "Total: " + this.total;
     };
 
     static fetchAll() {
