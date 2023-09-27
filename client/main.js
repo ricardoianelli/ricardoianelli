@@ -39,6 +39,8 @@ function LoadLoggedInPage() {
         SaveToken(null);
         LoadLoggedOutPage();
     };
+
+    LoadProducts();
 };
 
 function HideElement(id) {
@@ -110,7 +112,73 @@ async function LoadProducts() {
 };
 
 function PopulateProducts(data) {
-    
+    const tableBody = document.querySelector('#product-list-table tbody');
+        
+    data.forEach(product => {
+        const row = document.createElement('tr');
+        
+        const nameCell = document.createElement('td');
+        nameCell.textContent = product.name;
+        row.appendChild(nameCell);
+
+        const priceCell = document.createElement('td');
+        priceCell.textContent = product.price;
+        row.appendChild(priceCell);
+
+        const imageCell = document.createElement('td');
+        const img = document.createElement('img');
+        img.src = product.image;
+        img.alt = product.name;
+        img.width = 50;
+        imageCell.appendChild(img);
+        row.appendChild(imageCell);
+
+        const stockCell = document.createElement('td');
+        stockCell.textContent = product.stock;
+        row.appendChild(stockCell);
+
+        const actionCell = document.createElement('td');
+        const cartButton = document.createElement('button');
+        const cartImage = document.createElement('img');
+        cartImage.src = 'https://cdn-icons-png.flaticon.com/512/263/263142.png';
+        cartImage.alt = 'Add to Cart';
+        cartImage.width = 25;
+        cartButton.appendChild(cartImage);
+        cartButton.addEventListener('click', function() {
+            addToCart(product);
+        });
+
+        actionCell.appendChild(cartButton);
+        row.appendChild(actionCell);
+
+        tableBody.appendChild(row);
+    });
 };
+
+async function addToCart(product) {
+    let currentUser = sessionStorage.getItem('user');
+    
+    const response = await fetch('http://localhost:3000/shopping-cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({user: currentUser, name: product.name})
+    });
+
+    const data = await response.json();
+
+    if(data.error) {
+        console.log("error: " + data.error);
+        document.getElementById('errorLabel').innerHTML = data.error;
+    } 
+    else {
+        RefreshShoppingCart();
+    };
+};
+
+function RefreshShoppingCart() {
+    console.log("Refreshing shopping cart...");
+}
 
 
