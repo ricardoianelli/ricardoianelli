@@ -227,7 +227,14 @@ async function RefreshShoppingCart() {
     } 
     else {
         console.log("shopping cart backend data: " + JSON.stringify(data));
-        PopulateCart(data);
+
+        let cartIsEmpty = data.cartLines.length <= 0;
+        document.getElementById('shopping-cart-items-empty').style.visibility = cartIsEmpty ? "visible" : "hidden";
+        document.getElementById('shopping-cart-items-not-empty').style.visibility = cartIsEmpty ? "hidden" : "visible";
+
+        if (!cartIsEmpty) {
+            PopulateCart(data);
+        }
     };
 };
 
