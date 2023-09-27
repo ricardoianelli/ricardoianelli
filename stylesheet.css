@@ -94,3 +94,7 @@ table, th, td {
 #place-order-button {
     font-weight: bold;
 }
+
+table#login-table, table#login-table tr td {
+    border-style: none;
+}
