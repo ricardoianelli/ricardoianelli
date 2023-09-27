@@ -7,20 +7,20 @@ module.exports = class ShoppingCartLine {
         this.total = productPrice * quantity;
     };
 
-    ChangeQuantity(quantity) {
+    changeQuantity(quantity) {
         this.quantity = quantity;
-        UpdateTotal();
+        this.updateTotal();
     };
 
-    Add(quantity) {
-        this.ChangeQuantity(quantity);
+    add(quantity) {
+        this.changeQuantity(this.quantity + quantity);
     };
 
-    Remove(quantity) {
-        this.ChangeQuantity(-quantity);
+    remove(quantity) {
+        this.changeQuantity(this.quantity - quantity);
     };
 
-    UpdateTotal() {
+    updateTotal() {
         this.total = this.productPrice * this.quantity;
     };
 }

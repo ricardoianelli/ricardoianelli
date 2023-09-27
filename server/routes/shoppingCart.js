@@ -4,6 +4,8 @@ const shoppingCartController = require("../controllers/shoppingCartController");
 const router = express.Router();
 
 router.get("/:user", shoppingCartController.getCart);
+router.post("/:user", shoppingCartController.add);
+router.delete("/:user", shoppingCartController.remove);
 router.put("/:user", shoppingCartController.update);
 
 module.exports = router;
