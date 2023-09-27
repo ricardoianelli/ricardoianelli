@@ -1,4 +1,23 @@
-products = [];
+products = [
+    {
+        "name": "Node.JS",
+        "price": 9.99,
+        "image": "https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png",
+        "stock": 7
+    },
+    {
+        "name": "React",
+        "price": 19.99,
+        "image": "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png",
+        "stock": 5
+    },
+    {
+        "name": "Angular",
+        "price": 29.99,
+        "image": "https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg",
+        "stock": 3
+    }
+];
 
 module.exports = class Product {
     constructor(name, price, image, stock) {
