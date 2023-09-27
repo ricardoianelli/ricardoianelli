@@ -1,25 +1,11 @@
-products = [
-    {
-        "name": "Node.JS",
-        "price": 9.99,
-        "image": "https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png",
-        "stock": 7
-    },
-    {
-        "name": "React",
-        "price": 19.99,
-        "image": "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png",
-        "stock": 5
-    },
-    {
-        "name": "Angular",
-        "price": 29.99,
-        "image": "https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg",
-        "stock": 3
-    }
-];
-
 module.exports = class Product {
+    
+    static products = [
+        new Product("Node.JS", 9.99, "https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png", 7),
+        new Product("React", 19.99, "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png", 5),
+        new Product("Angular", 29.99, "https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg", 3),
+    ];
+
     constructor(name, price, image, stock) {
         this.name = name;
         this.price = price;
@@ -27,8 +13,8 @@ module.exports = class Product {
         this.stock = stock;
     };
 
-    ChangeQuantity(quantity) {
-        prod = products.find(p => p.name == this.name);
+    changeQuantity(quantity) {
+    prod = Product.products.find(p => p.name == this.name);
         if (prod.stock + quantity < 0) {
             throw new Error("Cannot decrease stock bellow zero.");
         };
@@ -36,23 +22,23 @@ module.exports = class Product {
         prod.stock += quantity;
     };
 
-    Add(quantity) {
-        this.ChangeQuantity(quantity);
+    add(quantity) {
+        this.changeQuantity(quantity);
     };
 
-    Remove(quantity) {
-        this.ChangeQuantity(-quantity);
+    remove(quantity) {
+        this.changeQuantity(-quantity);
     };
 
     save() {
-        products.push(this);
+        Product.products.push(this);
         return this;
     }
 
     update() {
-        const index = products.findIndex(p => p.name === this.name);
+        const index = Product.products.findIndex(p => p.name === this.name);
         if (index > -1) {
-            products.splice(index, 1, this);
+            Product.products.splice(index, 1, this);
             return this;
         } else {
             throw new Error('NOT Found');
@@ -60,24 +46,29 @@ module.exports = class Product {
     }
 
     static fetchAll() {
-        return products;
+        return Product.products;
     };
 
     static findByName(name) {
-        const index = products.findIndex(p => p.name === name);
+        const index = Product.products.findIndex(p => p.name === name);
         if (index > -1) {
-            return products[index];
+            return Product.products[index];
         } else {
             return null;
         }
     };
 
     static deleteByName(name) {
-        const index = products.findIndex(p => p.name === name);
+        const index = Product.products.findIndex(p => p.name === name);
         if (index > -1) {
-            products = products.filter(p => p.name !== name);
+            Product.products = Product.products.filter(p => p.name !== name);
         } else {
             throw new Error('NOT Found');
         }
     };
+
+    static getQuantityByName(name) {
+        let prod = this.findByName(name);
+        return prod.quantity;
+    }
 };
