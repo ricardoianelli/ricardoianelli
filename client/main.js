@@ -1,5 +1,7 @@
 var DEFAULT_DECIMAL_PLACES = 2;
 
+//TODO: Move code to modules, class is getting too big
+
 window.onload = function() {
     var token = sessionStorage.getItem('token');
     console.log("token: " + token);
@@ -106,7 +108,6 @@ async function LoadProducts() {
     });
 
     const data = await response.json();
-    console.log(data);
 
     if(data.error) {
         console.log("error: " + data.error);
@@ -185,6 +186,31 @@ async function addToCart(product) {
         document.getElementById('errorLabel').innerHTML = data.error;
     } 
     else {
+        console.log("Added to cart");
+        RefreshShoppingCart();
+    };
+};
+
+async function removeFromCart(product) {
+    console.log("Removing from cart: " + JSON.stringify(product));
+    let currentUser = sessionStorage.getItem('user');
+    
+    const response = await fetch('http://localhost:3000/cart/' + currentUser, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({productName: product.name})
+    });
+
+    const data = await response.json();
+
+    if(data.error) {
+        console.log("error: " + data.error);
+        document.getElementById('errorLabel').innerHTML = data.error;
+    } 
+    else {
+        console.log("Removed from cart");
         RefreshShoppingCart();
     };
 };
@@ -229,15 +255,38 @@ function PopulateCart(data) {
         productTotal.textContent = line.total.toFixed(DEFAULT_DECIMAL_PLACES);
         row.appendChild(productTotal);
 
-        const quantityCell = document.createElement('td');
-        quantityCell.textContent = line.quantity;
-        row.appendChild(quantityCell);
+        const changeQuantityCell = document.createElement('td');
+        const changeQuantityDiv = document.createElement('div');
+        changeQuantityDiv.className = "quantity-div";
+
+        const minusButton = document.createElement('button');
+        minusButton.textContent = '-';
+        minusButton.addEventListener('click', function() {
+            removeFromCart({name: line.productName});
+        });
+
+        changeQuantityDiv.appendChild(minusButton);
+
+        const inputField = document.createElement('input');
+        inputField.type = 'number';
+        inputField.id = 'quantity-input';
+        inputField.value = line.quantity;
+        changeQuantityDiv.appendChild(inputField);
+
+        const plusButton = document.createElement('button');
+        plusButton.textContent = '+';
+        plusButton.addEventListener('click', function() {
+            addToCart({name: line.productName, price: line.productPrice});
+        });
+        changeQuantityDiv.appendChild(plusButton);
+
+        changeQuantityCell.appendChild(changeQuantityDiv);
+        row.appendChild(changeQuantityCell);
 
         tableBody.appendChild(row);
     });
 
     cartTotal.textContent = "Total: " + data.total.toFixed(DEFAULT_DECIMAL_PLACES);
-
 };
 
 

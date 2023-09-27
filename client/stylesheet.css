@@ -108,6 +108,7 @@ table {
 table, th, td {
     border: 1px solid;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 #shopping-cart-total-row {
@@ -134,4 +135,8 @@ table#login-table, table#login-table tr td {
 
 #login-welcome-text {
     text-decoration: underline;
+}
+
+#quantity-input {
+    width: 30%;
 }
