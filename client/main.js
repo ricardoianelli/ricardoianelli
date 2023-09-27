@@ -177,8 +177,19 @@ async function addToCart(product) {
     };
 };
 
-function RefreshShoppingCart() {
+async function RefreshShoppingCart() {
     console.log("Refreshing shopping cart...");
-}
+
+    const response = await fetch('http://localhost:3000/shopping-cart');
+    const data = await response.json();
+
+    if(data.error) {
+        console.log("error: " + data.error);
+        document.getElementById('errorLabel').innerHTML = data.error;
+    } 
+    else {
+        console.log("shopping cart backend data: " + data);
+    };
+};
 
 

@@ -1,10 +1,10 @@
-
 module.exports = class ShoppingCartLine {
 
-    constructor(product) {
-        this.product = product;
+    constructor(productName, productPrice, quantity) {
+        this.productName = productName; 
+        this.productPrice = productPrice;
         this.quantity = quantity;
-        UpdateTotal();
+        this.total = productPrice * quantity;
     };
 
     ChangeQuantity(quantity) {
@@ -21,6 +21,6 @@ module.exports = class ShoppingCartLine {
     };
 
     UpdateTotal() {
-        this.total = this.product.price * this.quantity;
+        this.total = this.productPrice * this.quantity;
     };
 }

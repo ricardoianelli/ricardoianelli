@@ -1,5 +1,7 @@
 let shoppingCarts = [];
 
+const ShoppingCartLine = require("./shoppingCartLine");
+
 module.exports = class ShoppingCart {
 
     constructor(user) {
@@ -16,10 +18,10 @@ module.exports = class ShoppingCart {
         const index = shoppingCarts.findIndex(p => p.user === this.user);
         if (index > -1) {
             shoppingCarts.splice(index, 1, this);
-            return this;
         } else {
-            throw new Error('NOT Found');
-        }
+            this.save();
+        };
+        return this;
     }
 
     static fetchAll() {
@@ -31,8 +33,8 @@ module.exports = class ShoppingCart {
         if (index > -1) {
             return shoppingCarts[index];
         } else {
-            throw new Error('NOT Found');
-        }
+            throw new Error('No shopping cart found for this user.');
+        };
     }
 
     static deleteByUser(user) {
@@ -40,8 +42,16 @@ module.exports = class ShoppingCart {
         if (index > -1) {
             shoppingCarts = shoppingCarts.filter(p => p.user !== user);
         } else {
-            throw new Error('NOT Found');
-        }
-    }
+            throw new Error('No shopping cart found for this user.');
+        };
+    };
 
-}
+    static fromJson(jsonData) {
+        let newCart = new ShoppingCart(jsonData.user);
+        jsonData.cartLines.forEach(cartLine => {
+            newCart.cartLines.push(new ShoppingCartLine(cartLine.productName, cartLine.productPrice, cartLine.quantity));
+        });
+
+        return newCart;
+    };
+};
