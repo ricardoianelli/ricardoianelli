@@ -3,8 +3,12 @@ var DEFAULT_DECIMAL_PLACES = 2;
 window.onload = function() {
     var token = sessionStorage.getItem('token');
     console.log("token: " + token);
-
-    LoadLoggedOutPage();
+    if (token == null || token == "null") {
+        LoadLoggedOutPage();
+    }
+    else {
+        LoadLoggedInPage();
+    }
 };
 
 function LoadLoggedOutPage() {
@@ -43,6 +47,7 @@ function LoadLoggedInPage() {
     };
 
     LoadProducts();
+    RefreshShoppingCart();
 };
 
 function HideElement(id) {
@@ -115,6 +120,11 @@ async function LoadProducts() {
 
 function PopulateProducts(data) {
     const tableBody = document.querySelector('#product-list-table tbody');
+
+    //Cleanup table before populating again.
+    if (tableBody) {
+        tableBody.innerHTML = "";
+    }
         
     data.forEach(product => {
         const row = document.createElement('tr');
