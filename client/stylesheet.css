@@ -131,3 +131,7 @@ table#login-table, table#login-table tr td {
 #errorLabel {
     color: red;
 }
+
+#login-welcome-text {
+    text-decoration: underline;
+}

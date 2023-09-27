@@ -58,7 +58,7 @@ function SaveToken(token) {
 };
 
 function UpdateUserWelcomeText(user) {
-    document.getElementById("login-welcome-text").innerHTML = "Welcome, " + user;
+    document.getElementById("login-welcome-text").innerHTML = user;
 }
 
 async function Login(username, password) {
