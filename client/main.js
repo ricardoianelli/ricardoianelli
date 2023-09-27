@@ -1,3 +1,5 @@
+var DEFAULT_DECIMAL_PLACES = 2;
+
 window.onload = function() {
     var token = sessionStorage.getItem('token');
     console.log("token: " + token);
@@ -122,7 +124,7 @@ function PopulateProducts(data) {
         row.appendChild(nameCell);
 
         const priceCell = document.createElement('td');
-        priceCell.textContent = product.price;
+        priceCell.textContent = product.price.toFixed(DEFAULT_DECIMAL_PLACES);
         row.appendChild(priceCell);
 
         const imageCell = document.createElement('td');
@@ -158,12 +160,12 @@ function PopulateProducts(data) {
 async function addToCart(product) {
     let currentUser = sessionStorage.getItem('user');
     
-    const response = await fetch('http://localhost:3000/shopping-cart', {
+    const response = await fetch('http://localhost:3000/cart/' + currentUser, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({user: currentUser, name: product.name})
+        body: JSON.stringify({productName: product.name, productPrice: product.price})
     });
 
     const data = await response.json();
@@ -179,8 +181,8 @@ async function addToCart(product) {
 
 async function RefreshShoppingCart() {
     console.log("Refreshing shopping cart...");
-
-    const response = await fetch('http://localhost:3000/shopping-cart');
+    let currentUser = sessionStorage.getItem('user');
+    const response = await fetch('http://localhost:3000/cart/' + currentUser);
     const data = await response.json();
 
     if(data.error) {
@@ -188,8 +190,44 @@ async function RefreshShoppingCart() {
         document.getElementById('errorLabel').innerHTML = data.error;
     } 
     else {
-        console.log("shopping cart backend data: " + data);
+        console.log("shopping cart backend data: " + JSON.stringify(data));
+        PopulateCart(data);
     };
+};
+
+function PopulateCart(data) {
+    const tableBody = document.querySelector('#shopping-cart-table tbody');
+    const cartTotal = document.querySelector('#shopping-cart-total-row');
+
+    //Cleanup table before populating again.
+    if (tableBody) {
+        tableBody.innerHTML = "";
+    }
+        
+    data.cartLines.forEach(line => {
+        const row = document.createElement('tr');
+        
+        const nameCell = document.createElement('td');
+        nameCell.textContent = line.productName;
+        row.appendChild(nameCell);
+
+        const priceCell = document.createElement('td');
+        priceCell.textContent = line.productPrice.toFixed(DEFAULT_DECIMAL_PLACES);
+        row.appendChild(priceCell);
+
+        const productTotal = document.createElement('td');
+        productTotal.textContent = line.total.toFixed(DEFAULT_DECIMAL_PLACES);
+        row.appendChild(productTotal);
+
+        const quantityCell = document.createElement('td');
+        quantityCell.textContent = line.quantity;
+        row.appendChild(quantityCell);
+
+        tableBody.appendChild(row);
+    });
+
+    cartTotal.textContent = "Total: " + data.total.toFixed(DEFAULT_DECIMAL_PLACES);
+
 };
 
 
