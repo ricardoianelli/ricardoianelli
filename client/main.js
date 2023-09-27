@@ -52,18 +52,16 @@ function LoadLoggedInPage() {
         LoadLoggedOutPage();
     };
 
-
-
     LoadProducts();
     RefreshShoppingCart();
 };
 
 function HideElement(id) {
-    document.getElementById(id).style.visibility = 'hidden';
+    document.getElementById(id).style.display = 'none';
 };
 
 function ShowElement(id) {
-    document.getElementById(id).style.visibility = 'visible';
+    document.getElementById(id).style.display = 'flex';
 };
 
 function SaveUser(user) {
