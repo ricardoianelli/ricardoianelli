@@ -4,7 +4,6 @@ var DEFAULT_DECIMAL_PLACES = 2;
 
 window.onload = function() {
     var token = sessionStorage.getItem('token');
-    console.log("token: " + token);
     if (token == null || token == "null") {
         LoadLoggedOutPage();
     }
