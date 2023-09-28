@@ -9,7 +9,6 @@ exports.getProductByName = (req, res, next) => {
 }
 
 exports.save = (req, res, next) => {
-    console.log("saving new product");
     const prod = req.body;
     if (Product.findByName(prod.name) != null) {
         throw new Error("Product already exists");

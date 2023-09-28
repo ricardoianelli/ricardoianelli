@@ -46,7 +46,6 @@ function LoadLoggedInPage() {
     };
 
     document.getElementById('logout-button').onclick = function() {
-        console.log("Logging out user " + loggedInUser);
         SaveUser(null);
         SaveToken(null);
         LoadLoggedOutPage();
@@ -78,7 +77,6 @@ function UpdateUserWelcomeText(user) {
 
 async function PlaceOrder() {
     let currentUser = sessionStorage.getItem('user');
-    console.log("Placing order for user " + currentUser);
 
     const response = await fetch('http://localhost:3000/cart/place/' + currentUser, {
         method: 'POST',
@@ -124,7 +122,6 @@ async function Login(username, password) {
             }
         }
 
-        console.log("Trying to log in with user " + username + " and password " + password);
         SaveUser(data.username);
         SaveToken(data.username);
         LoadLoggedInPage();
@@ -136,7 +133,6 @@ async function Login(username, password) {
 };
 
 async function LoadProducts() {
-    console.log("Requesting product list...");
     const response = await fetch('http://localhost:3000/products', {
         method: 'GET',
         headers: {
@@ -221,13 +217,11 @@ async function addToCart(product) {
         console.log("error: " + data.error);
     } 
     else {
-        console.log("Added to cart");
         RefreshShoppingCart();
     };
 };
 
 async function removeFromCart(product) {
-    console.log("Removing from cart: " + JSON.stringify(product));
     let currentUser = sessionStorage.getItem('user');
     
     const response = await fetch('http://localhost:3000/cart/' + currentUser, {
@@ -244,13 +238,11 @@ async function removeFromCart(product) {
         console.log("error: " + data.error);
     } 
     else {
-        console.log("Removed from cart");
         RefreshShoppingCart();
     };
 };
 
 async function RefreshShoppingCart() {
-    console.log("Refreshing shopping cart...");
     let currentUser = sessionStorage.getItem('user');
     const response = await fetch('http://localhost:3000/cart/' + currentUser);
     const data = await response.json();
