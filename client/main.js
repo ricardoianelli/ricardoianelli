@@ -81,7 +81,8 @@ async function PlaceOrder() {
     const response = await fetch('http://localhost:3000/cart/place/' + currentUser, {
         method: 'POST',
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'auth': sessionStorage.getItem('token')
         }
     });
 
@@ -98,8 +99,6 @@ async function PlaceOrder() {
 
 async function Login(username, password) {
     try {
-        
-    
         const response = await fetch('http://localhost:3000/users', {
             method: 'POST',
             body: JSON.stringify({
@@ -107,7 +106,8 @@ async function Login(username, password) {
                 password: password
             }),
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                'auth': sessionStorage.getItem('token')
             }
         });
 
@@ -123,7 +123,7 @@ async function Login(username, password) {
         }
 
         SaveUser(data.username);
-        SaveToken(data.username);
+        SaveToken(data.token);
         LoadLoggedInPage();
 
     } catch (error) {
@@ -136,7 +136,8 @@ async function LoadProducts() {
     const response = await fetch('http://localhost:3000/products', {
         method: 'GET',
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'auth': sessionStorage.getItem('token')
         }
     });
 
@@ -206,7 +207,8 @@ async function addToCart(product) {
     const response = await fetch('http://localhost:3000/cart/' + currentUser, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-type': 'application/json',
+            'auth': sessionStorage.getItem('token')
         },
         body: JSON.stringify({productName: product.name, productPrice: product.price})
     });
@@ -227,7 +229,8 @@ async function removeFromCart(product) {
     const response = await fetch('http://localhost:3000/cart/' + currentUser, {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-type': 'application/json',
+            'auth': sessionStorage.getItem('token')
         },
         body: JSON.stringify({productName: product.name})
     });
@@ -244,7 +247,14 @@ async function removeFromCart(product) {
 
 async function RefreshShoppingCart() {
     let currentUser = sessionStorage.getItem('user');
-    const response = await fetch('http://localhost:3000/cart/' + currentUser);
+
+    const response = await fetch('http://localhost:3000/cart/' + currentUser, {
+        headers: {
+            'Content-type': 'application/json',
+            'auth': sessionStorage.getItem('token')
+        }
+    });
+
     const data = await response.json();
 
     if(data.error) {
