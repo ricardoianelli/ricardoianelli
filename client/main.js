@@ -2,13 +2,13 @@ var DEFAULT_DECIMAL_PLACES = 2;
 
 //TODO: Move code to modules, class is getting too big
 
-window.onload = function() {
+window.onload = async function() {
     var token = sessionStorage.getItem('token');
     if (token == null || token == "null") {
-        LoadLoggedOutPage();
+        await LoadLoggedOutPage();
     }
     else {
-        LoadLoggedInPage();
+        await LoadLoggedInPage();
     }
 };
 
@@ -28,7 +28,7 @@ function LoadLoggedOutPage() {
     };
 };
 
-function LoadLoggedInPage() {
+async function LoadLoggedInPage() {
     let loggedInUser = sessionStorage.getItem('user');
     let token = sessionStorage.getItem('token');
 
@@ -50,8 +50,8 @@ function LoadLoggedInPage() {
         LoadLoggedOutPage();
     };
 
-    LoadProducts();
-    RefreshShoppingCart();
+    await LoadProducts();
+    await RefreshShoppingCart();
 };
 
 function HideElement(id) {
@@ -88,11 +88,15 @@ async function PlaceOrder() {
     const data = await response.json();
 
     if(data.error) {
+        if (response.status == 401) {
+            return LoadLoggedOutPage();
+        }
         console.log("error: " + data.error);
+        alert(data.error);
     } 
     else {
-        LoadProducts();
-        RefreshShoppingCart();
+        await LoadProducts();
+        await RefreshShoppingCart();
     };
 }
 
@@ -126,8 +130,8 @@ async function Login(username, password) {
         LoadLoggedInPage();
 
     } catch (error) {
-        console.log(error);
-        document.getElementById('errorLabel').innerHTML = error;     
+        console.log(error.message);
+        alert(error.message);     
     }
 };
 
@@ -143,7 +147,11 @@ async function LoadProducts() {
     const data = await response.json();
 
     if(data.error) {
+        if (response.status == 401) {
+            return LoadLoggedOutPage();
+        }
         console.log("error: " + data.error);
+        alert(data.error);
     } 
     else {
         let productsTable = document.getElementById('product-list-table');
@@ -215,7 +223,11 @@ async function addToCart(product) {
     const data = await response.json();
 
     if(data.error) {
+        if (response.status == 401) {
+            return LoadLoggedOutPage();
+        }
         console.log("error: " + data.error);
+        alert(data.error);
     } 
     else {
         RefreshShoppingCart();
@@ -237,7 +249,11 @@ async function removeFromCart(product) {
     const data = await response.json();
 
     if(data.error) {
+        if (response.status == 401) {
+            return LoadLoggedOutPage();
+        }
         console.log("error: " + data.error);
+        alert(data.error);
     } 
     else {
         RefreshShoppingCart();
@@ -257,7 +273,12 @@ async function RefreshShoppingCart() {
     const data = await response.json();
 
     if(data.error) {
+        if (response.status == 401) {
+            return LoadLoggedOutPage();
+        }
         console.log("error: " + data.error);
+        alert(data.error);
+
     } 
     else {
         let cartIsEmpty = data.cartLines.length <= 0;

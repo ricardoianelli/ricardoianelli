@@ -26,9 +26,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-style: solid;
-    border-width: 1px;
-    border-color: green;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 #main-content {
@@ -45,6 +45,7 @@ body {
     height: 100%;
     width: 70%;
     position: relative;
+    overflow: hidden;
 }
 
 #logged-in-main-content {
@@ -128,10 +129,6 @@ table, th, td {
 
 table#login-table, table#login-table tr td {
     border-style: none;
-}
-
-#errorLabel {
-    color: red;
 }
 
 #login-welcome-text {
