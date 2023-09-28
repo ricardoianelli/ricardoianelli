@@ -259,8 +259,6 @@ async function RefreshShoppingCart() {
         console.log("error: " + data.error);
     } 
     else {
-        console.log("shopping cart backend data: " + JSON.stringify(data));
-
         let cartIsEmpty = data.cartLines.length <= 0;
         document.getElementById('shopping-cart-items-empty').style.visibility = cartIsEmpty ? "visible" : "hidden";
         document.getElementById('shopping-cart-items-not-empty').style.visibility = cartIsEmpty ? "hidden" : "visible";

@@ -78,10 +78,8 @@ module.exports = class ShoppingCart {
         this.calculateTotal();
     };
 
-    //Testing a different way, change to the pattern I used in the others later
-    placeOrder = function() {
+    placeOrder() {
         let orderDesc = this.generateOrderDesc();
-        console.log(orderDesc);
         this.cartLines.forEach(line => {
             let prod = Products.findByName(line.productName);
             
