@@ -141,3 +141,13 @@ table#login-table, table#login-table tr td {
 #quantity-input {
     width: 30%;
 }
+
+.topmenu-icon-div {
+    height: 100%;
+}
+
+.topmenu-icon {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

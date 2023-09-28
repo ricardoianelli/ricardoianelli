@@ -99,30 +99,40 @@ async function PlaceOrder() {
 }
 
 async function Login(username, password) {
-    const response = await fetch('http://localhost:3000/users', {
-        method: 'POST',
-        body: JSON.stringify({
-            username: username,
-            password: password
-        }),
-        headers: {
-            'Content-type': 'application/json'
+    try {
+        
+    
+        const response = await fetch('http://localhost:3000/users', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.status < 200 || response.status > 300) {
+            if (data.error) {
+                throw new Error(data.error);  
+            }
+            else {
+                throw new Error(JSON.stringify(data));
+            }
         }
-    });
 
-    const data = await response.json();
-
-    if(data.error) { // Login failed
-        console.log("error: " + data.error);
-        document.getElementById('errorLabel').innerHTML = data.error;
-    } 
-    else { // Login succeeded
-        document.getElementById('errorLabel').innerHTML = "";
         console.log("Trying to log in with user " + username + " and password " + password);
         SaveUser(data.username);
         SaveToken(data.username);
         LoadLoggedInPage();
-    };
+
+    } catch (error) {
+        console.log(error);
+        document.getElementById('errorLabel').innerHTML = error;     
+    }
 };
 
 async function LoadProducts() {
