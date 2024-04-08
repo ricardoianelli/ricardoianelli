@@ -13,7 +13,7 @@
 ## :runner: About me
 
 - 👨🏽‍💻 Someone who love coding and digital games;
-- 🌱 Currently pursuing my Masters degree in Computer Science at Maharishi International University, Iowa/USA; 
+- 🌱 MSc in Computer Science but an eternal apprentice;
 - 💬 Ask me about anything, I am happy to help;
 - 📫 How to reach me: [@ricardoianelli](https://www.linkedin.com/in/ricardoianelli/);
 
