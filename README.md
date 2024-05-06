@@ -12,10 +12,10 @@
 
 ## :runner: About me
 
-- 👨🏽‍💻 Someone who love coding and digital games;
-- 🌱 MSc in Computer Science;
-- 💬 Ask me about anything, I love to connect!;
-- 📫 How to reach me: [@ricardoianelli](https://www.linkedin.com/in/ricardoianelli/);
+- 👨🏽‍💻 Someone who love coding and digital games.
+- 🌱 MSc in Computer Science.
+- 💬 Ask me about anything, I love to connect!
+- 📫 How to reach me: [@ricardoianelli](https://www.linkedin.com/in/ricardoianelli/)
 
 ## 💬 To know more about me: 
 <a href="https://www.linkedin.com/in/ricardoianelli/"><img align="left" alt="Ricardo's Linkedin" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" /></a>
