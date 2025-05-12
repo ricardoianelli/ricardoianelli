@@ -1,7 +1,5 @@
 ### Hey there 👋, I'm Ricardo Ianelli! 
 
-![](https://visitor-badge.glitch.me/badge?page_id=ricardoianelli.ricardoianelli)
-
 ## :triangular_flag_on_post: Technical skills
 - Programming languages: Java, C#, Python, Lua, Javascript
 - Cloud Computing: AWS, Docker, Azure
